@@ -15,7 +15,7 @@ Aplicação para cálculo de investimentos em CDB com frontend em Angular e back
    - CDBCalculator.Api
    - CDBCalculator.Client
 2. Iniciar
-3. Após isso ele vai começar a baixar algumas dependencias do projeto, porem vai abrir normalmente
+3. Após isso ele vai começar a baixar algumas dependencias do projeto, depois vai abrir normalmente
 
 ## Execução dos Testes
 
