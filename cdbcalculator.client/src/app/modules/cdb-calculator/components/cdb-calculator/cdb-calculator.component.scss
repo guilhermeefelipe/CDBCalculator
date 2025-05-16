@@ -1,0 +1,201 @@
+@use "sass:color";
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+$primary: #2c3e50;
+$secondary: #3498db;
+$success: #27ae60;
+$danger: #e74c3c;
+$light: #ecf0f1;
+$dark: #2c3e50;
+
+.calculator-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  padding: 20px;
+}
+
+.calculator-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+}
+
+h1 {
+  color: $primary;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #7f8c8d;
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    margin-bottom: 8px;
+    color: $dark;
+    font-weight: 500;
+  }
+
+  .input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .currency {
+      position: absolute;
+      left: 12px;
+      color: #7f8c8d;
+    }
+  }
+
+  input {
+    width: 100%;
+    padding: 12px 16px;
+    padding-left: 32px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+
+    &:focus {
+      outline: none;
+      border-color: $secondary;
+      box-shadow: 0 0 0 2px rgba($secondary, 0.2);
+    }
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.error {
+  color: $danger;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
+
+  button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:first-child {
+      background-color: $secondary;
+      color: white;
+
+      &:hover {
+        background-color: color.adjust($secondary, $lightness: -10%);
+      }
+
+      &:disabled {
+        background-color: color.adjust($secondary, $lightness: 20%);
+        cursor: not-allowed;
+      }
+    }
+
+    &:last-child {
+      background-color: white;
+      color: $secondary;
+      border: 1px solid $secondary;
+
+      &:hover {
+        background-color: $light;
+      }
+    }
+  }
+}
+
+.error-message {
+  margin-top: 20px;
+  padding: 12px;
+  background-color: color.adjust($danger, $lightness: 40%);
+  color: color.adjust($danger, $lightness: -10%);
+  border-radius: 6px;
+  text-align: center;
+}
+
+.result-container {
+  margin-top: 25px;
+  padding: 20px;
+  background-color: color.adjust($secondary, $lightness: 40%);
+  border-radius: 8px;
+  animation: fadeIn 0.5s ease;
+
+  h2 {
+    font-size: 18px;
+    color: $primary;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #ddd;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &.highlight {
+    font-weight: bold;
+    color: $success;
+  }
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
